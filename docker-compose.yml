@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+
+  fluent-bit:
+    image: fluent/fluent-bit:1.9
+    volumes:
+      - ./fluent-bit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+    ports:
+      - "24224:24224"
+    networks:
+      - logging-network
+
+  fluentd:
+    image: fluent/fluentd:v1.14-1
+    volumes:
+      - ./fluentd/fluent.conf:/fluentd/etc/fluent.conf
+      - ./logs:/fluentd/log
+    ports:
+      - "24225:24224"
+    networks:
+      - logging-network
+    user: "root"
+    environment:
+      - FLUENTD_CONF=fluent.conf
+    command: fluentd -c /fluentd/etc/fluent.conf
+
+  app:
+    build:
+      context: ./app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - fluent-bit
+    networks:
+      - logging-network
+
+networks:
+  logging-network:
+    driver: bridge
