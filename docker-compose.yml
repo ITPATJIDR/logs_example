@@ -12,7 +12,9 @@ services:
       - logging-network
 
   fluentd:
-    image: fluent/fluentd:v1.14-1
+    build:
+      context: ./fluentd
+      dockerfile: Dockerfile
     volumes:
       - ./fluentd/fluent.conf:/fluentd/etc/fluent.conf
       - ./logs:/fluentd/log
@@ -24,6 +26,8 @@ services:
     environment:
       - FLUENTD_CONF=fluent.conf
     command: fluentd -c /fluentd/etc/fluent.conf
+    depends_on:
+      - influxdb
 
   app:
     build:
@@ -35,6 +39,25 @@ services:
     networks:
       - logging-network
 
+  influxdb:
+    image: influxdb:2.6
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password123
+      - DOCKER_INFLUXDB_INIT_ORG=myorg
+      - DOCKER_INFLUXDB_INIT_BUCKET=logging
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-token
+    networks:
+      - logging-network
+
 networks:
   logging-network:
     driver: bridge
+
+volumes:
+  influxdb-data:

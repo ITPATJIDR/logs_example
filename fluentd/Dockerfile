@@ -5,12 +5,13 @@ USER root
 RUN apk add --no-cache --update \
     build-base \
     ruby-dev \
-    && gem install fluent-plugin-elasticsearch \
+    && gem install fluent-plugin-influxdb-v2 \
     && gem sources --clear-all \
     && apk del build-base ruby-dev \
     && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
 
-# Copy configuration file
-COPY fluent.conf /fluentd/etc/
+# Create log directories with proper permissions
+RUN mkdir -p /fluentd/log/access /fluentd/log/errors /fluentd/log/general && \
+    chmod -R 777 /fluentd/log
 
-USER fluent 
+USER fluent

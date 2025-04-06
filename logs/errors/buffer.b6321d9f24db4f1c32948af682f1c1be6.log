@@ -1,1 +1,11 @@
 {"message":"Error endpoint was accessed","error":"This is a sample error"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":9.634506225585938,"cpu_load":1.61,"uptime":1306.390215386,"hostname":"09e08f53a3bb"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":9.272636413574219,"cpu_load":0.44,"uptime":63.128637159,"hostname":"50ea49109506"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":9.662498474121094,"cpu_load":0.44,"uptime":65.141676969,"hostname":"50ea49109506"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":9.799247741699219,"cpu_load":0.41,"uptime":67.155066057,"hostname":"50ea49109506"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":9.304702758789062,"cpu_load":0.97,"uptime":14.45433026,"hostname":"9927bb5aebda"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":9.448257446289062,"cpu_load":0.89,"uptime":16.473491783,"hostname":"9927bb5aebda"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":9.821723937988281,"cpu_load":0.89,"uptime":18.488083314,"hostname":"9927bb5aebda"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":10.106613159179688,"cpu_load":0.4,"uptime":276.544235784,"hostname":"9927bb5aebda"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":10.242431640625,"cpu_load":0.4,"uptime":278.564852716,"hostname":"9927bb5aebda"}
+{"message":"Error endpoint was accessed","error":"This is a sample error","memory_usage":9.601676940917969,"cpu_load":0.45,"uptime":280.583834683,"hostname":"9927bb5aebda"}
